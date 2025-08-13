@@ -2,6 +2,12 @@
 
 Expertsoft is a RESTful API and web application for managing bills, transaction, clients and related data. Built with Node.js, Express, and PostgreSQL, it provides endpoints for CRUD operations and CSV data import, along with a simple frontend for user interaction.
 
+## Autor
+
+   Juan Esteban Sepulveda
+   Bernes Lee
+   sepesteban01@gmail.com
+
 ## Features
 
 - Bill creation, listing, and deletion
