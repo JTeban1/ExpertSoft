@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Dashboard</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./uploadCSV.html">Upload files</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row mt-4">
+      <div class="col-12 mt-4 d-flex gap-2">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#appointmentModal">Insert
+          Bill</button>
+        <!-- <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#searchPatientModal">Search by
+          Client ID</button>
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+          data-bs-target="#searchAppointmentModal">Search by Bill ID</button> -->
+        <button type="button" class="btn btn-dark" id="loadAllAppointmentsBtn">Load All Bills</button>
+      </div>
+      <!-- Search by Patient ID Modal -->
+      <!-- <section class="modal fade" id="searchPatientModal" tabindex="-1" aria-labelledby="searchPatientModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <header class="modal-header">
+              <h5 class="modal-title" id="searchPatientModalLabel">Search Bills by client ID</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </header>
+            <div class="modal-body">
+              <form id="searchPatientForm">
+                <div class="mb-3">
+                  <label for="search_patient_id" class="form-label">Client ID</label>
+                  <input type="number" class="form-control" id="search_patient_id" name="search_patient_id" required>
+                </div>
+                <footer class="modal-footer">
+                  <button type="submit" class="btn btn-info">Search</button>
+                </footer>
+              </form>
+              <div id="searchPatientResults" class="mt-3"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      Search by Appointment ID Modal 
+      <section class="modal fade" id="searchAppointmentModal" tabindex="-1"
+        aria-labelledby="searchAppointmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <header class="modal-header">
+              <h5 class="modal-title" id="searchAppointmentModalLabel">Search Bill by ID</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </header>
+            <div class="modal-body">
+              <form id="searchAppointmentForm">
+                <div class="mb-3">
+                  <label for="search_appointment_id" class="form-label">Bill ID</label>
+                  <input type="number" class="form-control" id="search_appointment_id" name="search_appointment_id"
+                    required>
+                </div>
+                <footer class="modal-footer">
+                  <button type="submit" class="btn btn-secondary">Search</button>
+                </footer>
+              </form>
+              <div id="searchAppointmentResults" class="mt-3"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div> -->
+
+    <!-- Insert Bill Modal -->
+    <section class="modal fade" id="appointmentModal" tabindex="-1" aria-labelledby="appointmentModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <header class="modal-header">
+            <h5 class="modal-title" id="appointmentModalLabel">New Bill</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </header>
+          <div class="modal-body">
+            <form id="appointmentForm">
+              <div class="mb-3">
+                <label for="bill_quarter" class="form-label">Bill quarter</label>
+                <input type="date" class="form-control" id="bill_quarter" name="bill_quarter">
+              </div>
+              <div class="mb-3">
+                <label for="amount_billed" class="form-label">amount billed</label>
+                <input type="number" class="form-control" id="amount_billed" name="amount_billed">
+              </div>
+              <div class="mb-3">
+                <label for="amount_paid" class="form-label">Amount paid</label>
+                <input type="number" class="form-control" id="amount_paid" name="amount_paid">
+              </div>
+              <div class="mb-3">
+                <label for="id_client" class="form-label">Client ID</label>
+                <input type="text" class="form-control" id="id_client" name="id_client">
+              </div>
+              <div class="mb-3">
+                <label for="id_payment_method" class="form-label">Payment Method</label>
+                <select class="form-select" id="id_payment_method" name="id_payment_method">
+                  <option value="1">Nequi</option>
+                  <option value="2">Daviplata</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="id_transaction" class="form-label">Transaction ID</label>
+                <input type="text" class="form-control" id="id_transaction" name="id_transaction">
+              </div>
+              <footer class="modal-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </footer>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <h1 class="mt-5">Bills</h1>
+    <table class="table mt-5">
+      <thead>
+        <tr>
+          <th scope="col">Bill id</th>
+          <th scope="col">Bill quarter</th>
+          <th scope="col">Amount billed</th>
+          <th scope="col">Amount paid</th>
+          <th scope="col">Client</th>
+          <th scope="col">Payment method</th>
+          <th scope="col">ID transaction</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+
+        <!-- Edit Appointment Modal -->
+        <section class="modal fade" id="editAppointmentModal" tabindex="-1" aria-labelledby="editAppointmentModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <header class="modal-header">
+                <h5 class="modal-title" id="editAppointmentModalLabel">Edit Appointment</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </header>
+              <div class="modal-body">
+                <form id="editAppointmentForm">
+                  <input type="hidden" id="edit_id_bill" name="edit_id_bill">
+                  <div class="mb-3">
+                    <label for="edit_bill_quarter" class="form-label">Bill quarter</label>
+                    <input type="date" class="form-control" id="edit_bill_quarter" name="edit_bill_quarter">
+                  </div>
+                  <div class="mb-3">
+                    <label for="edit_amount_billed" class="form-label">Amount billed</label>
+                    <input type="number" class="form-control" id="edit_amount_billed" name="edit_amount_billed">
+                  </div>
+                  <div class="mb-3">
+                    <label for="edit_amount_paid" class="form-label">Amount paid</label>
+                    <input type="number" class="form-control" id="edit_amount_paid" name="edit_amount_paid">
+                  </div>
+                  <div class="mb-3">
+                    <label for="edit_id_client" class="form-label">Client ID</label>
+                    <input type="text" class="form-control" id="edit_id_client" name="edit_id_client">
+                  </div>
+                  <div class="mb-3">
+                    <label for="edit_payment_method_name" class="form-label">Payment Method</label>
+                    <select class="form-select" id="edit_payment_method_name" name="edit_payment_method_name">
+                      <option value="1">Nequi</option>
+                      <option value="2">Daviplata</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="edit_id_transaction" class="form-label">Transaction ID</label>
+                    <input type="text" class="form-control" id="edit_id_transaction" name="edit_id_transaction">
+                  </div>
+                  <footer class="modal-footer">
+                    <button type="submit" class="btn btn-success">Update</button>
+                  </footer>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Delete Confirmation Modal -->
+        <section class="modal fade" id="deleteAppointmentModal" tabindex="-1"
+          aria-labelledby="deleteAppointmentModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <header class="modal-header">
+                <h5 class="modal-title" id="deleteAppointmentModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </header>
+              <div class="modal-body">
+                <p>Are you sure you want to delete this bill?</p>
+              </div>
+              <footer class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+              </footer>
+            </div>
+          </div>
+        </section>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+    crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
